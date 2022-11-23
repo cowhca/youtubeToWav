@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 import youtube_dl
 import ffmpeg
+import sys
 
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -12,8 +13,7 @@ ydl_opts = {
 }
 
 with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-    url=input("Enter Youtube URL: ")
-    ydl.download([url])
+    ydl.download([sys.argv[1]])
     stream = ffmpeg.input('output.m4a')
-    stream = ffmpeg.output(stream, 'output.wav')
+    stream = ffmpeg.output(stream, sys.argv[2])
 
