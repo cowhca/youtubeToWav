@@ -15,5 +15,5 @@ ydl_opts = {
 with youtube_dl.YoutubeDL(ydl_opts) as ydl:
     ydl.download([sys.argv[1]])
     stream = ffmpeg.input('output.m4a')
-    stream = ffmpeg.output(stream, sys.argv[2])
+    stream = ffmpeg.output(stream, "output.wav")
 
